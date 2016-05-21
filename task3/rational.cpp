@@ -27,8 +27,8 @@ int rational::getDenom() const
 int rational::getgcd(int x, int y)
 {
 	return y == 0 ?
-		(x == 0 ? 0 : abs(x)) :
-		abs(getgcd(y, x % y));
+		(x == 0 ? 0 : rational::abs(x)) :
+		rational::abs(rational::getgcd(y, x % y));
 }
 
 rational const rational::operator +(rational const &x) const
