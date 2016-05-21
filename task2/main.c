@@ -269,7 +269,9 @@ void makeupdate()
 
 int main(int argc, const char **argv)
 {
-	filename = argv[1];
+	size_t len = strlen(argv[1]);
+	fileName = (char *) malloc((len + 1) * sizeof(char));
+	strcpy(fileName, argv[1]);
 	source = fopen(filename, "a+");
 	if (source == NULL)
 	{
