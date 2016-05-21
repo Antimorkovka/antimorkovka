@@ -1,4 +1,5 @@
 #include "rational.h"
+#include <string>
 
 rational::rational(int getnum)
 {
@@ -26,30 +27,36 @@ int rational::getDenom() const
 int rational::getgcd(int x, int y)
 {
 	return y == 0 ?
-		(x == 0 ? 0 : x) :
-		(getgcd(y, x % y));
+		(x == 0 ? 0 : abs(x)) :
+		abs(getgcd(y, x % y));
 }
 
 rational const rational::operator +(rational const &x) const
 {
 	return rational(this->getNum() * x.getDenom() + x.getNum() * this->getDenom(),
-					this->getDenom() * x.getDenom());
+		this->getDenom() * x.getDenom());
 }
 
 rational const rational::operator -(rational const &x) const
 {
 	return rational(this->getNum() * x.getDenom() + x.getNum() * this->getDenom(),
-					this->getDenom() * x.getDenom());
+		this->getDenom() * x.getDenom());
 }
 
 rational const rational::operator *(rational const &x) const
 {
 	return rational(this->getNum() * x.getNum(),
-					this->getDenom() * x.getDenom());
+		this->getDenom() * x.getDenom());
 }
 
 rational const rational::operator /(rational const &x) const
 {
 	return rational(this->getNum() * x.getDenom(),
-					this->getDenom() * x.getNum());
+		this->getDenom() * x.getNum());
+}
+
+int rational::abs(int a)
+{
+	std::string a_str = std::to_string(a);
+	return a_str[0] == '-' ? atoi(a_str.substr(1, 100500).c_str()) : atoi(a_str.c_str());
 }
