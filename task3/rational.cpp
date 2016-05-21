@@ -1,6 +1,4 @@
 #include "rational.h"
-#include <string>
-#include <stdlib.h>
 
 rational::rational(int getnum)
 {
@@ -40,7 +38,7 @@ rational const rational::operator +(rational const &x) const
 
 rational const rational::operator -(rational const &x) const
 {
-	return rational(this->getNum() * x.getDenom() + x.getNum() * this->getDenom(),
+	return rational(this->getNum() * x.getDenom() - x.getNum() * this->getDenom(),
 		this->getDenom() * x.getDenom());
 }
 
