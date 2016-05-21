@@ -267,7 +267,7 @@ void makeupdate()
 }
 
 
-int main(int argc, const char *argv[])
+int main(int argc, const char **argv)
 {
 	filename = argv[1];
 	source = fopen(filename, "a+");
