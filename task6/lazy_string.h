@@ -1,12 +1,3 @@
-/*
-Класс lazy_string, реализующий copy-on-write
-Конструируется от std::string
-Приводится к std::string
-Имеет size, length, at, operator[] аналогично std::string
-Имеет операторы ввода и вывода в поток (<<, >>)
-Имеет substr, причем при взятии подстроки копирования не происходит
-*/
-
 #ifndef LAZY_STRING_H
 #define LAZY_STRING_H
 
