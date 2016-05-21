@@ -267,43 +267,6 @@ void makeupdate()
 }
 
 
-
-void find(char *input)
-{
-	int i;
-	bool found = false;
-	input = makelower(input);
-	if (isdigit(input[0]))
-	{
-		for (i = 0; i < phonebook.size; i++)
-		{
-			if ((phonebook.contacts[i].id) && (!strcmp(makelower(phonebook.contacts[i].number), input)))
-			{
-				printf("%d %s %s\n", phonebook.contacts[i].id, phonebook.contacts[i].name, phonebook.contacts[i].number);
-				found = true;
-			}
-		}
-	}
-	else
-	{
-		for (i = 0; i < phonebook.size; i++)
-		{
-			if ((phonebook.contacts[i].id) && (strstr(makelower(phonebook.contacts[i].name), input)))
-			{
-				printf("%d %s %s\n", phonebook.contacts[i].id, phonebook.contacts[i].name, phonebook.contacts[i].number);
-				found = true;
-			}
-		}
-	}
-	if (!found)
-	{
-		printf("Error: no such contact.\n");
-	}
-	return;
-}
-
-
-
 int main(int argc, const char *argv[])
 {
 	filename = argv[1];
