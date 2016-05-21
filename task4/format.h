@@ -89,7 +89,7 @@ bool check_type(Format format, T variable, typename std::enable_if<!(std::is_con
     throw std::invalid_argument("Invalid argument");
 }
  
-// Returns formatted argument
+// Returns formatted argument (for str)
 template<typename T>
 std::string get_format_string(T &arg, Format &format, std::string &format_str, typename std::enable_if<std::is_same<T, std::string>::value || std::is_same<T, const std::string>::value>::type * = 0)
 {
@@ -118,7 +118,7 @@ std::string get_format_string(T &arg, Format &format, std::string &format_str, t
 }
  
  
-//Converts arg to int
+//Converts arg to int, used for reading width and precision
 template<typename T>
 int read_int(T &arg, typename std::enable_if<std::is_integral<T>::value>::type * = 0)
 {
@@ -132,7 +132,7 @@ int read_int(T &arg, typename std::enable_if<!std::is_integral<T>::value>::type 
 }
  
  
-//Returns formatted argument, reads width and precision
+// Read width, precision and argument and returns formatted argument
 template<typename T1, typename T2, typename T3, typename ...Args>
 std::string format_3_args(std::string &formatParams, Format &format, T1 &width, T2 &precision, T3 &arg, Args &... rest)
 {
@@ -165,7 +165,7 @@ std::string format_2_args(std::string &formatSpec, Format &f, Args &... rest)
     throw std::out_of_range("Not enough arguments");
 }
  
-// Read argument and returns formatted argument
+// Read argument and, formatted argument
 template<typename T, typename ...Args>
 std::string format_arg(std::string &formatSpec, Format &format, T &arg, Args &... rest)
 {
@@ -177,9 +177,9 @@ std::string format_arg(std::string &formatSpec, Format &f, Args &... rest)
 {
     throw std::out_of_range("Not enough arguments");
 }
- 
- 
-// Checks for too many args
+
+
+// Processes rest of format (without arguments) and throws out_of_range if format declared more
 template<typename ...Args>
 std::string sprint(const std::string &fmt, int &count_of_args, size_t &index, Args &... rest)
 {
@@ -243,7 +243,11 @@ std::string sprint(const std::string &fmt, int &count_of_extraArgs, size_t &inde
 }
  
  
-//Returns formatted string, checks amount of arguments
+/**
+ * Returns a formatted string using the inputted format string and arguments.
+ * Throws  std::invalid_argument, if a format string contains an illegal syntax or illegal arguments in formatting
+ * Throws std::out_of_range, if the arguments' list contains too few or too many arguments
+ */
 template<typename ...Args>
 std::string format(const std::string &formatString, const Args &... args)
 {
