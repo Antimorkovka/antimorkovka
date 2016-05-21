@@ -58,6 +58,5 @@ rational const rational::operator /(rational const &x) const
 
 int rational::abs(int a)
 {
-	std::string a_str = std::to_string(a);
-	return a_str[0] == '-' ? atoi(a_str.substr(1, 100500).c_str()) : atoi(a_str.c_str());
+	return a < 0 ? -a : a;
 }
