@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<malloc.h>
+#include<stdexcept>
 
 int main(int argc, char** argv)
 {
