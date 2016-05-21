@@ -24,7 +24,8 @@ int main(int argc, char** argv)
 		scanf("%d %d %d", &y1, &x2, &y2);
 		if(!(x1 >= 0 && x2 <= n && y1 >= 0 && y2 <= n && x2 >= x1 && y2 >= y1))
 		{
-			throw std::out_of_range("Out of bounds");
+			printf("Out of bounds\n");
+			break;
 		}
 		for (i = y1; i <= y2; i++)
 		{
