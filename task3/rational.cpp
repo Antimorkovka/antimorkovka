@@ -32,23 +32,23 @@ int rational::getgcd(int x, int y)
 rational const rational::operator +(rational const &x) const
 {
 	return rational(this->getNum() * x.getDenom() + x.getNum() * this->getDenom(),
-					this->getDenom * x.getDenom());
+					this->getDenom() * x.getDenom());
 }
 
 rational const rational::operator -(rational const &x) const
 {
 	return rational(this->getNum() * x.getDenom() + x.getNum() * this->getDenom(),
-					this->getDenom * x.getDenom());
+					this->getDenom() * x.getDenom());
 }
 
 rational const rational::operator *(rational const &x) const
 {
 	return rational(this->getNum() * x.getNum(),
-					this->getDenom * x.getDenom());
+					this->getDenom() * x.getDenom());
 }
 
 rational const rational::operator /(rational const &x) const
 {
 	return rational(this->getNum() * x.getDenom(),
-					this->getDenom * x.getNum());
+					this->getDenom() * x.getNum());
 }
