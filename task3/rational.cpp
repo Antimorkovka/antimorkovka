@@ -1,5 +1,6 @@
 #include "rational.h"
 #include <string>
+#include <stdlib.h>
 
 rational::rational(int getnum)
 {
